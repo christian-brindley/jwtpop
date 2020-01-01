@@ -40,9 +40,13 @@
                     "transform" : {
                         "type" : "text/javascript",
                         "globals" : { },
-                        "source" : "logger.error(\"building device list\");\nif (source) {\n  var deviceList = new Array();\n  for each (device in source.devices) {\n\n    var deviceObj = openidm.read(device._ref);\n    /*\n    var deviceSpec = { \n      \"deviceId\" : deviceObj.deviceId, \n      \"friendlyName\": deviceObj.friendlyName,\n      \"lastUsed\" : deviceObj.lastUsed,\n      \"registered\" : deviceObj.registered,\n      \"status\" : deviceObj.status,\n      \"jwk\": deviceObj.jwk\n    };   \n    \n    var deviceJson = JSON.stringify(deviceSpec);\n    */\n    var deviceJson = JSON.stringify(deviceObj);\n    logger.error(\"device spec \" + deviceJson);\n    deviceList.push(deviceJson);\n  }\n  deviceList;\n  //target.popDeviceProfiles = deviceList;\n}"
+                        "source" : "logger.error(\"building device list\");\nif (source) {\n  var deviceList = new Array();\n  for each (device in source.devices) {\n\n    var deviceObj = openidm.read(device._ref);\n\n    var deviceJson = JSON.stringify(deviceObj);\n    logger.error(\"device spec \" + deviceJson);\n    deviceList.push(deviceJson);\n  }\n  deviceList;\n\n}"
                     },
                     "source" : ""
+                },
+                {
+                    "target" : "userPassword",
+                    "source" : "password"
                 }
             ],
             "policies" : [

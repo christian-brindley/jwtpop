@@ -19,6 +19,7 @@
                 "$schema" : "http://forgerock.org/json-schema#",
                 "type" : "object",
                 "title" : "User",
+                "description" : null,
                 "icon" : "fa-user",
                 "properties" : {
                     "_id" : {
@@ -617,7 +618,7 @@
                         "searchable" : false,
                         "userEditable" : false,
                         "policies" : [ ],
-                        "returnByDefault" : true,
+                        "returnByDefault" : false,
                         "minLength" : null,
                         "pattern" : "",
                         "type" : "array",
@@ -650,8 +651,7 @@
                                         "queryFilter" : "true",
                                         "fields" : [
                                             "deviceId",
-                                            "friendlyName",
-                                            "status"
+                                            "friendlyName"
                                         ],
                                         "sortKeys" : [ ]
                                     }
@@ -1158,7 +1158,7 @@
                         "userEditable" : true
                     },
                     "owner" : {
-                        "title" : "Owning user",
+                        "title" : "Owner",
                         "type" : "relationship",
                         "viewable" : true,
                         "searchable" : false,
@@ -1209,8 +1209,7 @@
                     "owner"
                 ],
                 "required" : [
-                    "deviceId",
-                    "owner"
+                    "deviceId"
                 ]
             }
         }
