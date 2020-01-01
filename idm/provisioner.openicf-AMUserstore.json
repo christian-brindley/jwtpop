@@ -50,7 +50,8 @@
             "top",
             "person",
             "organizationalPerson",
-            "inetOrgPerson"
+            "inetOrgPerson",
+            "popDeviceProfilesContainer"
         ],
         "accountUserNameAttributes" : [
             "uid"

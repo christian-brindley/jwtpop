@@ -626,7 +626,6 @@
                             "type" : "relationship",
                             "reverseRelationship" : true,
                             "reversePropertyName" : "owner",
-                            "notifySelf" : true,
                             "validate" : false,
                             "properties" : {
                                 "_ref" : {
@@ -1116,46 +1115,64 @@
                 "icon" : "fa-mobile-phone",
                 "properties" : {
                     "deviceId" : {
-                        "title" : null,
+                        "title" : "Device ID",
                         "type" : "string",
                         "viewable" : true,
                         "searchable" : true,
-                        "userEditable" : true
+                        "userEditable" : true,
+                        "description" : null,
+                        "minLength" : null,
+                        "isVirtual" : false
                     },
                     "friendlyName" : {
-                        "title" : null,
+                        "title" : "Friendly Name",
                         "type" : "string",
                         "viewable" : true,
                         "searchable" : true,
-                        "userEditable" : true
+                        "userEditable" : true,
+                        "description" : null,
+                        "minLength" : null,
+                        "isVirtual" : false
                     },
                     "lastUsed" : {
-                        "title" : null,
+                        "title" : "Last used",
                         "type" : "string",
                         "viewable" : true,
                         "searchable" : true,
-                        "userEditable" : true
+                        "userEditable" : true,
+                        "description" : null,
+                        "minLength" : null,
+                        "isVirtual" : false
                     },
                     "registered" : {
-                        "title" : null,
+                        "title" : "Time of registration",
                         "type" : "string",
                         "viewable" : true,
                         "searchable" : true,
-                        "userEditable" : true
+                        "userEditable" : true,
+                        "description" : null,
+                        "minLength" : null,
+                        "isVirtual" : false
                     },
                     "status" : {
-                        "title" : null,
+                        "title" : "Status",
                         "type" : "string",
                         "viewable" : true,
                         "searchable" : true,
-                        "userEditable" : true
+                        "userEditable" : true,
+                        "description" : null,
+                        "minLength" : null,
+                        "isVirtual" : false
                     },
                     "jwk" : {
-                        "title" : null,
+                        "title" : "JWK",
                         "type" : "string",
                         "viewable" : true,
                         "searchable" : true,
-                        "userEditable" : true
+                        "userEditable" : true,
+                        "description" : null,
+                        "minLength" : null,
+                        "isVirtual" : false
                     },
                     "owner" : {
                         "title" : "Owner",
@@ -1185,7 +1202,6 @@
                         "resourceCollection" : [
                             {
                                 "path" : "managed/user",
-                                "notify" : true,
                                 "label" : "User",
                                 "query" : {
                                     "queryFilter" : "true",
