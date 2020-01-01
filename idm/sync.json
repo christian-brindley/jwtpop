@@ -1,0 +1,104 @@
+{
+    "mappings" : [
+        {
+            "target" : "system/AMUserstore/account",
+            "source" : "managed/user",
+            "name" : "managedUser_systemAmuserstoreAccount",
+            "icon" : null,
+            "displayName" : "managedUser_systemAmuserstoreAccount",
+            "properties" : [
+                {
+                    "target" : "dn",
+                    "source" : "userName",
+                    "transform" : {
+                        "type" : "text/javascript",
+                        "source" : "\"uid=\" + source + \",ou=people,ou=identities\""
+                    }
+                },
+                {
+                    "target" : "cn",
+                    "transform" : {
+                        "type" : "text/javascript",
+                        "source" : "source.givenName + ' ' + source.sn"
+                    },
+                    "source" : ""
+                },
+                {
+                    "target" : "sn",
+                    "source" : "sn"
+                },
+                {
+                    "target" : "givenName",
+                    "source" : "givenName"
+                },
+                {
+                    "target" : "mail",
+                    "source" : "mail"
+                },
+                {
+                    "target" : "popDeviceProfiles",
+                    "transform" : {
+                        "type" : "text/javascript",
+                        "globals" : { },
+                        "source" : "logger.error(\"building device list\");\nif (source) {\n  var deviceList = new Array();\n  for each (device in source.devices) {\n\n    var deviceObj = openidm.read(device._ref);\n    /*\n    var deviceSpec = { \n      \"deviceId\" : deviceObj.deviceId, \n      \"friendlyName\": deviceObj.friendlyName,\n      \"lastUsed\" : deviceObj.lastUsed,\n      \"registered\" : deviceObj.registered,\n      \"status\" : deviceObj.status,\n      \"jwk\": deviceObj.jwk\n    };   \n    \n    var deviceJson = JSON.stringify(deviceSpec);\n    */\n    var deviceJson = JSON.stringify(deviceObj);\n    logger.error(\"device spec \" + deviceJson);\n    deviceList.push(deviceJson);\n  }\n  deviceList;\n  //target.popDeviceProfiles = deviceList;\n}"
+                    },
+                    "source" : ""
+                }
+            ],
+            "policies" : [
+                {
+                    "action" : "EXCEPTION",
+                    "situation" : "AMBIGUOUS"
+                },
+                {
+                    "action" : "EXCEPTION",
+                    "situation" : "SOURCE_MISSING"
+                },
+                {
+                    "action" : "EXCEPTION",
+                    "situation" : "MISSING"
+                },
+                {
+                    "action" : "EXCEPTION",
+                    "situation" : "FOUND_ALREADY_LINKED"
+                },
+                {
+                    "action" : "DELETE",
+                    "situation" : "UNQUALIFIED"
+                },
+                {
+                    "action" : "EXCEPTION",
+                    "situation" : "UNASSIGNED"
+                },
+                {
+                    "action" : "EXCEPTION",
+                    "situation" : "LINK_ONLY"
+                },
+                {
+                    "action" : "IGNORE",
+                    "situation" : "TARGET_IGNORED"
+                },
+                {
+                    "action" : "IGNORE",
+                    "situation" : "SOURCE_IGNORED"
+                },
+                {
+                    "action" : "IGNORE",
+                    "situation" : "ALL_GONE"
+                },
+                {
+                    "action" : "UPDATE",
+                    "situation" : "CONFIRMED"
+                },
+                {
+                    "action" : "UPDATE",
+                    "situation" : "FOUND"
+                },
+                {
+                    "action" : "CREATE",
+                    "situation" : "ABSENT"
+                }
+            ]
+        }
+    ]
+}
