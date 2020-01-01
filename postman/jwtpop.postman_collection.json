@@ -1,0 +1,679 @@
+{
+	"info": {
+		"_postman_id": "c994336c-5e77-4ea1-8920-6854c3e62180",
+		"name": "jwtpop",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Init crypto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "760be668-9075-44c4-a14f-dceca6e7eea0",
+						"exec": [
+							"pm.globals.set(\"jsrsasign-js\", responseBody);",
+							"",
+							"pm.environment.set(\"signingKey\", \"-----BEGIN PRIVATE KEY-----MIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDEWDBqLQTUj3x7gHZxjLGN7vu56CMJhUQKt/zpiNNHm5VLPl+iD6JfVQyS0Td66Bpb5DVzMpvewmH4fTKN38Nl/RhlV2Diq/l/3tE7f9uaaMefI1glEWsmUfP5Ig4kPvKNVE7wp8z1zuKzgagACfL/Q9c3REYhjiIpTlsYxixkte118awVJfaytH385WZlovGqNCK7geefE4bhtkaqlkpCNXUkym9HvSDrunmwp0CT7w8aK07SaJ+pKHr1hW42Gx8ELcArS9y2RUNhFc77WMEQCa2Vh3/NYNakFdHrjxXK+Ixgw7Pwdpnehk2eSm5Jo9tBvn4IwWRkJRuPRMKMXl8LAgMBAAECggEBAKFlnOaqev3/tOQQhUxxysJRYLtBBwwccAIfm9ackpCaY+6mJxago2iaEOve7ywo/wHqZcV8JITIZKBOye+1sHl1w0gKu6mYlE94aaXvRCV5XB6Ef0B5QQsO8u4oAFfrJpbmZr2MMf8dQV0th1wA0a7jpVXY2Y1buNkbf+atgHCHay6q6ptXnedDUrEp53tLiaUnc1syMCnHNl+Afif2nP07zRZaJ+5jXxcxEzNlCdh6WvCcdccLTZjYqjUy8/FxBKHAsAGtvbTUh+CdlQVj3nORBJ2M3d8Rogo15QCZF6UhNaCQ905EVWuLLSS9PnmCw8cyF9r6J4cnNx3lQOwn6QECgYEA5Q+3SLZTVz9ZZGE4AvpdDCcdtPCktwb0QG+pTH+giP8le7bDb30/MWd+wUC67G4XzjY+ZowSm2C2QZ4RloPotwR7esBteVg8D0R+W4NTcCfj+2RctHnKfDK0jO2+TzSeJIQAsfU1tllh7KOQJuX5djk4I2yXpwffRk2wuCuAy/kCgYEA2295mk/Vd9fdS7Eib8mdT1htrFqwu60SbM9PNlhUFlLV1jd6WRaL3IjLXyeAYFMi0CifjWZXIpmeYlVC1Z9RPxSUdU5xg11XTdyy3zExUgMQrB3FngfcmgaEZmormErPrA3/y8Y0LILvMO1y3pXDzWDFKTP9Uzakk8Sswa9dXCMCgYEAsBs/HMYgmQl5XrVn7NIzy24fZsdEu/q6uveeP9Q3xlvzo4PGCedPOFqLl2R+0dtqrf4CR7EVdSQLu7Mdbo0H0/28OYnMIOj3c/2C8DStZ6Mjolls9MxWItqQ+XCnShn4I7bhGfCeVQ2vPdIat+1Dt+MSCBorFh31SQXeAhpgMXECgYEAiFP9bI1kxgvqhHgMOP89KGp72LSPUEn6RHeXct/1fdkA2RGmhWqogd7K2tcjvrRn0IMsfSCzyd8+s0DdQPK1+0bB5Q9THpYDA3C2AEwDpDwbQ5NLjx67Q0YBQ896PidcVjxsSyFckLrX98HNt9O7zgDs/Og73lL4dIWf/sUAb5kCgYAleITkFvD0s66UkVt+60bn8cPRVHb7YsUIsr0XdoUS/F+A9t3J1lh3Qgcey4AiQjdMb42M2mvY/ede/xpE2RttXixw0X2ZOLyORYaown68ebIy+z9ImhPnud00TIeXx4ZLqygHc1ysBz4BS8a6tGOvItryjEH85JPx4yDbhF5FEQ==-----END PRIVATE KEY-----\");",
+							"",
+							"pm.environment.set(\"signingJwk\",{kty:\"RSA\",e:\"AQAB\",kid:\"b26f5b82-6d3d-492a-be07-c0f999477906\",n:\"xFgwai0E1I98e4B2cYyxje77uegjCYVECrf86YjTR5uVSz5fog-iX1UMktE3eugaW-Q1czKb3sJh-H0yjd_DZf0YZVdg4qv5f97RO3_bmmjHnyNYJRFrJlHz-SIOJD7yjVRO8KfM9c7is4GoAAny_0PXN0RGIY4iKU5bGMYsZLXtdfGsFSX2srR9_OVmZaLxqjQiu4HnnxOG4bZGqpZKQjV1JMpvR70g67p5sKdAk-8PGitO0mifqSh69YVuNhsfBC3AK0vctkVDYRXO-1jBEAmtlYd_zWDWpBXR648VyviMYMOz8HaZ3oZNnkpuSaPbQb5-CMFkZCUbj0TCjF5fCw\"})",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{jsrsasignURL}}",
+					"host": [
+						"{{jsrsasignURL}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Start authentication",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "322b73fb-7920-4689-a9cf-158c5a8652db",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"",
+							"pm.environment.set(\"authId\", data.authId);",
+							"",
+							"var challengeHeader = pm.response.headers.get('www-authenticate');",
+							"var challenge = challengeHeader.split(\"challenge=\\\"\")[1].split(\"\\\"\")[0];",
+							"pm.environment.set(\"challenge\",challenge);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "a5849111-7926-4838-9410-cd6389179539",
+						"exec": [
+							"const jar = pm.cookies.jar();",
+							"jar.unset(pm.request.url, 'iPlanetDirectoryPro', function (error) {",
+							"  console.log(error);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept-API-Version",
+						"type": "text",
+						"value": "resource=2.0, protocol=1.0"
+					}
+				],
+				"url": {
+					"raw": "{{amURL}}/authenticate",
+					"host": [
+						"{{amURL}}"
+					],
+					"path": [
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Challenge response",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "ca3f451f-fc76-4923-b367-16e96cd949e7",
+						"exec": [
+							"// Create a signed challenge response",
+							"",
+							"var navigator = {}; //fake a navigator object for the lib",
+							"var window = {}; //fake a window object for the lib",
+							"eval(pm.globals.get(\"jsrsasign-js\"));",
+							"",
+							"var challenge = pm.environment.get(\"challenge\"); ",
+							"var jwk = pm.environment.get(\"signingJwk\");",
+							"",
+							"var header = {\"alg\": \"RS256\", \"typ\": \"JWT\", \"jwk\": jwk };",
+							"var data = {",
+							"\t\"exp\": Math.round(60 + Date.now()/1000),",
+							"\t\"iss\": \"e9c0ee2e-054c-11ea-8d71-362b9e155667\",",
+							"\t\"sub\": \"jane.doe\",",
+							"\t\"aud\": \"https://am.authdemo.org\",",
+							"\t\"jti\": challenge,",
+							"\t\"jwk\": jwk",
+							"};",
+							"",
+							"var sHeader =  JSON.stringify(header);",
+							"console.log(sHeader);",
+							"var sPayload = JSON.stringify(data);",
+							"var prvKey = pm.environment.get(\"signingKey\"); ",
+							"var sJWT = KJUR.jws.JWS.sign(\"RS256\", sHeader, sPayload, prvKey);",
+							"pm.environment.set(\"jwtToken\", sJWT);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "699df4f5-9200-4c46-9ab6-dbcb75a0b6c1",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"",
+							"postman.setEnvironmentVariable(\"authId\", data.authId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept-API-Version",
+						"type": "text",
+						"value": "resource=2.0, protocol=1.0"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwtToken}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"authId\": \"{{authId}}\"\n}"
+				},
+				"url": {
+					"raw": "https://am.authdemo.org/json/realms/root/realms/mobile/authenticate",
+					"protocol": "https",
+					"host": [
+						"am",
+						"authdemo",
+						"org"
+					],
+					"path": [
+						"json",
+						"realms",
+						"root",
+						"realms",
+						"mobile",
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register - password",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "ca3f451f-fc76-4923-b367-16e96cd949e7",
+						"exec": [
+							"// Create a signed challenge response",
+							"",
+							"var navigator = {}; //fake a navigator object for the lib",
+							"var window = {}; //fake a window object for the lib",
+							"eval(pm.globals.get(\"jsrsasign-js\"));",
+							"",
+							"var challenge = pm.environment.get(\"challenge\"); ",
+							"var jwk = pm.environment.get(\"signingJwk\");",
+							"",
+							"var header = {\"alg\": \"RS256\", \"typ\": \"JWT\", \"jwk\": jwk };",
+							"var data = {",
+							"\t\"exp\": Math.round(60 + Date.now()/1000),",
+							"\t\"iss\": \"e9c0ee2e-054c-11ea-8d71-362b9e155667\",",
+							"\t\"sub\": \"jane.doe\",",
+							"\t\"aud\": \"https://am.authdemo.org\",",
+							"\t\"jti\": challenge,",
+							"\t\"jwk\": jwk",
+							"};",
+							"",
+							"var sHeader =  JSON.stringify(header);",
+							"console.log(sHeader);",
+							"var sPayload = JSON.stringify(data);",
+							"var prvKey = pm.environment.get(\"signingKey\"); ",
+							"var sJWT = KJUR.jws.JWS.sign(\"RS256\", sHeader, sPayload, prvKey);",
+							"pm.environment.set(\"jwtToken\", sJWT);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "699df4f5-9200-4c46-9ab6-dbcb75a0b6c1",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"",
+							"postman.setEnvironmentVariable(\"authId\", data.authId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept-API-Version",
+						"type": "text",
+						"value": "resource=2.0, protocol=1.0"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{jwtToken}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"authId\": \"{{authId}}\",\n    \"callbacks\": [\n        {\n            \"type\": \"PasswordCallback\",\n            \"output\": [\n                {\n                    \"name\": \"prompt\",\n                    \"value\": \"Password\"\n                }\n            ],\n            \"input\": [\n                {\n                    \"name\": \"IDToken1\",\n                    \"value\": \"Passw0rd\"\n                }\n            ]\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "https://am.authdemo.org/json/realms/root/realms/mobile/authenticate",
+					"protocol": "https",
+					"host": [
+						"am",
+						"authdemo",
+						"org"
+					],
+					"path": [
+						"json",
+						"realms",
+						"root",
+						"realms",
+						"mobile",
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register - friendly name",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "ca3f451f-fc76-4923-b367-16e96cd949e7",
+						"exec": [
+							"// Create a signed challenge response",
+							"",
+							"var navigator = {}; //fake a navigator object for the lib",
+							"var window = {}; //fake a window object for the lib",
+							"eval(pm.globals.get(\"jsrsasign-js\"));",
+							"",
+							"var challenge = pm.environment.get(\"challenge\"); ",
+							"var jwk = pm.environment.get(\"signingJwk\");",
+							"",
+							"var header = {\"alg\": \"RS256\", \"typ\": \"JWT\", \"jwk\": jwk };",
+							"var data = {",
+							"\t\"exp\": Math.round(60 + Date.now()/1000),",
+							"\t\"iss\": \"e9c0ee2e-054c-11ea-8d71-362b9e155667\",",
+							"\t\"sub\": \"jane.doe\",",
+							"\t\"aud\": \"https://am.authdemo.org\",",
+							"\t\"jti\": challenge,",
+							"\t\"jwk\": jwk",
+							"};",
+							"",
+							"var sHeader =  JSON.stringify(header);",
+							"console.log(sHeader);",
+							"var sPayload = JSON.stringify(data);",
+							"var prvKey = pm.environment.get(\"signingKey\"); ",
+							"var sJWT = KJUR.jws.JWS.sign(\"RS256\", sHeader, sPayload, prvKey);",
+							"pm.environment.set(\"jwtToken\", sJWT);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "699df4f5-9200-4c46-9ab6-dbcb75a0b6c1",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"",
+							"postman.setEnvironmentVariable(\"authId\", data.authId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept-API-Version",
+						"type": "text",
+						"value": "resource=2.0, protocol=1.0"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{jwtToken}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"authId\": \"{{authId}}\",\n    \"callbacks\": [\n        {\n            \"type\": \"NameCallback\",\n            \"output\": [\n                {\n                    \"name\": \"prompt\",\n                    \"value\": \"FriendlyName\"\n                }\n            ],\n            \"input\": [\n                {\n                    \"name\": \"IDToken1\",\n                    \"value\": \"My iPhone\"\n                }\n            ]\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "https://am.authdemo.org/json/realms/root/realms/mobile/authenticate",
+					"protocol": "https",
+					"host": [
+						"am",
+						"authdemo",
+						"org"
+					],
+					"path": [
+						"json",
+						"realms",
+						"root",
+						"realms",
+						"mobile",
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "IDM - get user by username",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6148d1ac-fa4d-42e3-8110-891e437b4b13",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"",
+							"postman.setEnvironmentVariable(\"testUserId\", data.result[0]._id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-OpenIDM-Username",
+						"type": "text",
+						"value": "openidm-admin"
+					},
+					{
+						"key": "X-OpenIDM-Password",
+						"type": "text",
+						"value": "openidm-admin"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{idmURL}}/openidm/managed/user?_queryFilter=userName+eq+'{{testUser}}'",
+					"host": [
+						"{{idmURL}}"
+					],
+					"path": [
+						"openidm",
+						"managed",
+						"user"
+					],
+					"query": [
+						{
+							"key": "_queryFilter",
+							"value": "userName+eq+'{{testUser}}'"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "IDM - get registered devices",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-OpenIDM-Username",
+						"value": "openidm-admin",
+						"type": "text"
+					},
+					{
+						"key": "X-OpenIDM-Password",
+						"value": "openidm-admin",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{idmURL}}/openidm/managed/user/{{testUserId}}?_fields=devices",
+					"host": [
+						"{{idmURL}}"
+					],
+					"path": [
+						"openidm",
+						"managed",
+						"user",
+						"{{testUserId}}"
+					],
+					"query": [
+						{
+							"key": "_fields",
+							"value": "devices"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "IDM - register device",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "2e925e86-950d-4bf0-8143-f2190896db7e",
+						"exec": [
+							"function uuidv4() {",
+							"  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {",
+							"    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);",
+							"    return v.toString(16);",
+							"  });",
+							"}",
+							"",
+							"var dateNow = Math.round(60 + Date.now()/1000);",
+							"var uuid = uuidv4();",
+							"",
+							"pm.environment.set(\"uuid\", uuid);",
+							"pm.environment.set(\"dateNow\", dateNow);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "ea7f8d17-451d-4002-b055-e00666932727",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"",
+							"postman.setEnvironmentVariable(\"deviceId\", data._id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-OpenIDM-Username",
+						"type": "text",
+						"value": "openidm-admin"
+					},
+					{
+						"key": "X-OpenIDM-Password",
+						"type": "text",
+						"value": "openidm-admin"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"deviceId\": \"{{uuid}}\",\n  \"friendlyName\": \"My iPad\",\n  \"lastUsed\": \"{{dateNow}}\",\n  \"registered\": \"{{dateNow}}\",\n  \"status\": \"active\",\n  \"jwk\": \"{\\\"kty\\\":\\\"RSA\\\",\\\"e\\\":\\\"AQAB\\\",\\\"kid\\\":\\\"b26f5b82-6d3d-492a-be07-c0f999477906\\\",\\\"n\\\":\\\"xFgwai0E1I98e4B2cYyxje77uegjCYVECrf86YjTR5uVSz5fog-iX1UMktE3eugaW-Q1czKb3sJh-H0yjd_DZf0YZVdg4qv5f97RO3_bmmjHnyNYJRFrJlHz-SIOJD7yjVRO8KfM9c7is4GoAAny_0PXN0RGIY4iKU5bGMYsZLXtdfGsFSX2srR9_OVmZaLxqjQiu4HnnxOG4bZGqpZKQjV1JMpvR70g67p5sKdAk-8PGitO0mifqSh69YVuNhsfBC3AK0vctkVDYRXO-1jBEAmtlYd_zWDWpBXR648VyviMYMOz8HaZ3oZNnkpuSaPbQb5-CMFkZCUbj0TCjF5fCw\\\"}\",\n  \"owner\": {\n    \"_ref\": \"managed/user/{{testUserId}}\"\n  }\n}\n"
+				},
+				"url": {
+					"raw": "{{idmURL}}/openidm/managed/device?_action=create",
+					"host": [
+						"{{idmURL}}"
+					],
+					"path": [
+						"openidm",
+						"managed",
+						"device"
+					],
+					"query": [
+						{
+							"key": "_action",
+							"value": "create"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "IDM - deactivate device",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "2e925e86-950d-4bf0-8143-f2190896db7e",
+						"exec": [
+							"var dateNow = Math.round(60 + Date.now()/1000);",
+							"",
+							"pm.environment.set(\"dateNow\", dateNow);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "X-OpenIDM-Username",
+						"type": "text",
+						"value": "openidm-admin"
+					},
+					{
+						"key": "X-OpenIDM-Password",
+						"type": "text",
+						"value": "openidm-admin"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[ \n\t{\n\t\t\"operation\" : \"replace\",\n\t\t\"field\" : \"status\",\n\t\t\"value\" : \"inactive\"\n\t} \n]"
+				},
+				"url": {
+					"raw": "{{idmURL}}/openidm/managed/device/{{deviceId}}",
+					"host": [
+						"{{idmURL}}"
+					],
+					"path": [
+						"openidm",
+						"managed",
+						"device",
+						"{{deviceId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "IDM - update lastused",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "2e925e86-950d-4bf0-8143-f2190896db7e",
+						"exec": [
+							"var dateNow = Math.round(60 + Date.now()/1000);",
+							"",
+							"pm.environment.set(\"dateNow\", dateNow);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "X-OpenIDM-Username",
+						"type": "text",
+						"value": "openidm-admin"
+					},
+					{
+						"key": "X-OpenIDM-Password",
+						"type": "text",
+						"value": "openidm-admin"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[ \n\t{\n\t\t\"operation\" : \"replace\",\n\t\t\"field\" : \"lastUsed\",\n\t\t\"value\" : \"{{dateNow}}\"\n\t} \n]"
+				},
+				"url": {
+					"raw": "{{idmURL}}/openidm/managed/device/{{deviceId}}",
+					"host": [
+						"{{idmURL}}"
+					],
+					"path": [
+						"openidm",
+						"managed",
+						"device",
+						"{{deviceId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
