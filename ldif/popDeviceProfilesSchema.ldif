@@ -1,0 +1,7 @@
+dn: cn=schema
+objectclass: top
+objectclass: ldapSubentry
+objectclass: subschema
+cn: schema
+attributeTypes: ( 2.25.202450356671620610902620534213497411175 NAME 'popDeviceProfiles' DESC 'Proof of possession device profiles string' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+objectClasses: ( 2.25.18379578903368511494067478432811669095 NAME 'popDeviceProfilesContainer' DESC 'Class containing proof of possession device profiles' SUP top AUXILIARY MAY ( popDeviceProfiles ) )
