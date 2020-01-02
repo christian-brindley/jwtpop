@@ -11,7 +11,7 @@ Note that these assets are purely for demonstrating the concept of JWT based pro
 
 - Limited to zero error handling
 - Plain text IDM credentials
-- Support for RSA signing only (should support EC)
+- Support for RSA signing only (no EC support)
 - Plenty more limitations
 
 ## Contents
