@@ -10,7 +10,7 @@ The core functions are provided by a set of authentication nodes for the ForgeRo
 Note that these assets are purely for demonstrating the concept of JWT based proof of possession, and have a number of limitations, including
 
 - Limited to zero error handling
-- Plain text passwords (should be secrets)
+- Plain text IDM credentials
 - Support for RSA signing only (should support EC)
 - Plenty more limitations
 
