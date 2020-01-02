@@ -27,10 +27,10 @@ This repo consists of the following assets
 
 You'll need the following to implement the full demo setup
 
-- ForgeRock Access Management (tested with AM 6.5.2)
-- ForgeRock Directory Services (tested with DS 6.5.2)
-- ForgeRock Identity Management (tested with IDM 6.5.0)
-- Postman (tested with Postman 7.12)
+- [ForgeRock Access Management](https://www.forgerock.com/platform/access-management) (tested with AM 6.5.2)
+- [ForgeRock Directory Services](https://www.forgerock.com/platform/directory-services) (tested with DS 6.5.2)
+- [ForgeRock Identity Management](https://www.forgerock.com/platform/identity-management) (tested with IDM 6.5.0)
+- [Postman](https://www.getpostman.com) (tested with Postman 7.12)
 
 
 
