@@ -68,9 +68,9 @@ Content-Type: application/json;charset=UTF-8
 
 The mobile device creates a signed JWT (typically using a biometric protected private key) containing the challenge from AM, together with details of both the user and the device itself. The device public key is included in the JWT header, as a **jwk** claim. The key claims within the JWT payload are as follows
 
-- **iss** The device ID
-- **sub** The user ID
-- **jti** The challenge from AM
+- **iss**   The device ID
+- **sub**   The user ID
+- **jti**   The challenge from AM
 
 For example:
 
