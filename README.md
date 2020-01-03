@@ -47,7 +47,9 @@ You'll need to set up a secret with ID "IDMPassword" for the registration script
 
 #### Authentication nodes
 
-You'll need to add all four groovy scripts as scripted decision nodes. Once done, you can build an authentication tree 
+You'll need to add all four groovy scripts as [scripted decision nodes](https://backstage.forgerock.com/docs/am/6.5/authentication-guide/#auth-node-scripted-decision). Once done, you can build an authentication tree to handle authentication and registration. For simplicity, you can split the registration into an inner tree - for example:
+
+
 
 
 
