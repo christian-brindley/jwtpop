@@ -162,19 +162,19 @@ The nodes are as follows
 
 - **popChallenge.groovy**
 
- - This is the initial authentication node which responds to the mobile device with an HttpCallback containing the challenge.
+  This is the initial authentication node which responds to the mobile device with an HttpCallback containing the challenge.
 
 - **popResponse.groovy**
 
- - This authentication node validates the response collected by the popChallenge node
+  This authentication node validates the response collected by the popChallenge node
 
 - **popFriendlyName.groovy**
 
- - This is a simple node which sends a NameCallback to collect the friendly name for the device to be registered
+  This is a simple node which sends a NameCallback to collect the friendly name for the device to be registered
 
 - **popRegister.groovy**
 
- - This node calls IDM to register the new device against the user identity.
+  This node calls IDM to register the new device against the user identity.
 
 
 Once done, you can build an authentication tree to handle authentication and registration. For simplicity, you can split the registration into an inner tree - for example:
