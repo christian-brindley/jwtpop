@@ -19,10 +19,10 @@ Note that these assets are purely for demonstrating the concept of JWT based pro
 
 This repo consists of the following assets
 
-- Sample scripted decision nodes for ForgeRock Access Manager 
-- Sample LDIF files with the LDAP container definition for holding the device key information in a user directory 
-- Sample configuration files for ForgeRock IDM to handle device registration
-- Sample Postman collection and environment definition to emulate the mobile device for testing
+- [Sample scripted decision nodes](nodes) for ForgeRock Access Manager 
+- [Sample LDIF files](ldif) with the LDAP container definition for holding the device key information in a user directory 
+- [Sample configuration files](idm) for ForgeRock IDM to handle device registration
+- [Sample Postman collection and environment](postman) to emulate the mobile device for testing
 
 ## Requirements
 
