@@ -68,11 +68,14 @@ You'll need to update the ForgeRock DS schema with the custom user attribute *po
 
 Example entry as follows
 
-```{"deviceId":"4d5d7dc2-6ee9-4ddd-85d0-79be72450c0c","friendlyName":"My iPad","lastUsed":"1577873454","registered":"1577873454","status":"active","jwk":"{\"kty\":\"RSA\",\"e\":\"AQAB\",\"kid\":\"b26f5b82-6d3d-492a-be07-c0f999477906\",\"n\":\"xFgwai0E1I98e4B2cYyxje77uegjCYVECrf86YjTR5uVSz5fog-iX1UMktE3eugaW-Q1czKb3sJh-H0yjd_DZf0YZVdg4qv5f97RO3_bmmjHnyNYJRFrJlHz-SIOJD7yjVRO8KfM9c7is4GoAAny_0PXN0RGIY4iKU5bGMYsZLXtdfGsFSX2srR9_OVmZaLxqjQiu4HnnxOG4bZGqpZKQjV1JMpvR70g67p5sKdAk-8PGitO0mifqSh69YVuNhsfBC3AK0vctkVDYRXO-1jBEAmtlYd_zWDWpBXR648VyviMYMOz8HaZ3oZNnkpuSaPbQb5-CMFkZCUbj0TCjF5fCw\"}","_id":"12a006b7-8393-420e-8585-41d4b8baf29b","_rev":"5"}```
+```
+{"deviceId":"4d5d7dc2-6ee9-4ddd-85d0-79be72450c0c","friendlyName":"My iPad","lastUsed":"1577873454","registered":"1577873454","status":"active","jwk":"{\"kty\":\"RSA\",\"e\":\"AQAB\",\"kid\":\"b26f5b82-6d3d-492a-be07-c0f999477906\",\"n\":\"xFgwai0E1I98e4B2cYyxje77uegjCYVECrf86YjTR5uVSz5fog-iX1UMktE3eugaW-Q1czKb3sJh-H0yjd_DZf0YZVdg4qv5f97RO3_bmmjHnyNYJRFrJlHz-SIOJD7yjVRO8KfM9c7is4GoAAny_0PXN0RGIY4iKU5bGMYsZLXtdfGsFSX2srR9_OVmZaLxqjQiu4HnnxOG4bZGqpZKQjV1JMpvR70g67p5sKdAk-8PGitO0mifqSh69YVuNhsfBC3AK0vctkVDYRXO-1jBEAmtlYd_zWDWpBXR648VyviMYMOz8HaZ3oZNnkpuSaPbQb5-CMFkZCUbj0TCjF5fCw\"}","_id":"12a006b7-8393-420e-8585-41d4b8baf29b","_rev":"5"}
+```
 
 You'll find a sample LDIF file with the required definition for this container. You can import this by dropping it into the DS schema directory, or by using ldapmodify in a similar way that is documented for importing the webauthn definition:
 
-```$ ./ldapmodify \
+```
+$ ./ldapmodify \
 --hostname 'id.example.com' \
 --port 1389 \
 --useStartTLS \
@@ -80,6 +83,7 @@ You'll find a sample LDIF file with the required definition for this container. 
 --continueOnError \
 --bindDN 'cn=Directory Manager' \
 --bindPassword 'str0ngEx4mplePa55word' \
-/path/to/tomcat/webapps/openam/WEB-INF/template/ldif/opendj/popdeviceprofiles.ldif ```
+popDeviceProfilesSchema.ldif 
+```
 
 
