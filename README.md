@@ -92,6 +92,7 @@ For example:
 
 This JWT is included in the **Authorization** header of the request - e.g.
 
+```
 POST https://am.authdemo.org/json/realms/root/realms/mobile/authenticate
 Accept-API-Version: resource=2.0, protocol=1.0
 Authorization: eyJhbGciOiJ...EGRIQQmlvdBB3si3_ctg' \
@@ -99,6 +100,7 @@ Authorization: eyJhbGciOiJ...EGRIQQmlvdBB3si3_ctg' \
   -d '{
     "authId": "eyJ0…66caD6YW4JrVtTzbeVWZ3ZI”
 }'
+```
 
 ### Verification
 
