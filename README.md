@@ -261,7 +261,7 @@ This creates and sends a signed JWT with the challenge from AM, along with the d
 
 If the device is registered and the JWT signature is validated, then AM will create a user session and return the ssoToken.
 
-If the device is not registered, then AM will return a callback for authentication (in the case of the demo, this is just the directory password for the user specified in the signed JWT from the device), in order to start the device registration process. Tests then continue with the next request (**Register - password**)
+If the device is not registered, then AM will return a callback for authentication (just password based authentication for the demo), in order to start the device registration process. Tests then continue with the next request (**Register - password**)
 
 #### Register - password
 
