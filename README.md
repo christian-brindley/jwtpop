@@ -223,15 +223,15 @@ Ultimately, the authentication logic should be tested using a mobile app with th
  
 In the first instance, this repo includes a sample Postman collection for testing each stage of authentication and registration. The Postman requests included are as follows:
 
-## Init crypto
+#### Init crypto
 
 This sets up an internal signing service, based on the open source [jsrsasign](https://github.com/kjur/jsrsasign) javascript library.
 
-## Start authentication
+#### Start authentication
 
 This calls the AM authentication tree you set up above, and expects a 401 response with the challenge from AM.
 
-## Challenge response
+#### Challenge response
 
 This creates and sends a signed JWT with the challenge from AM, along with the device and user details. 
 
@@ -239,11 +239,11 @@ If the device is registered and the JWT signature is validated, then AM will cre
 
 If the device is not registered, then AM will return a callback for authentication (in the case of the demo, this is just the directory password for the user specified in the signed JWT from the device), in order to start the device registration process. Tests then continue with the next request (**Register - password**)
 
-## Register - password
+#### Register - password
 
 This step sends the user's password back to AM in response to the password callback request If the password is successfully validated, AM will send back a NameCallback for the device friendly name to be used for device registration.
 
-## Register - friendly name
+#### Register - friendly name
 
 This step sends the device friendly name to AM. In response to this request, AM will call out to IDM to register the device against the user's idenity. IDM will then immediately update the user entry in DS via implicit sync, including a new popDeviceProfiles entry with the new device details.
 
