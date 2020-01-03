@@ -113,9 +113,7 @@ You'll need to create a mapping from the IDM managed user object to the Access M
  
 Ultimately, the authentication logic should be tested using a mobile app with the client side logic to generate signed responses to the HttpCallback response from AM. 
  
-In the first instance, this repo includes a sample Postman collection for testing each stage of authentication and registration. 
-
-The Postman requests included are as follows:
+In the first instance, this repo includes a sample Postman collection for testing each stage of authentication and registration. The Postman requests included are as follows:
 
 ## Init crypto
 
@@ -127,11 +125,11 @@ This calls the AM authentication tree you set up above, and expects a 401 respon
 
 ## Challenge response
 
-This creates a signed JWT with the challenge from AM, along with the device and user details. 
+This creates and sends a signed JWT with the challenge from AM, along with the device and user details. 
 
 If the device is registered and the JWT signature is validated, then AM will create a user session and return the ssoToken.
 
-If the device is not registered, then AM will return a callback for the next authentication step (in the case of the demo, this is just the directory password for the user specified in the signed JWT from the device). Tests should continue with the next request (**Register - password**)
+If the device is not registered, then AM will return a callback for authentication (in the case of the demo, this is just the directory password for the user specified in the signed JWT from the device), in order to start the device registration process. Tests then continue with the next request (**Register - password**)
 
 ## Register - password
 
