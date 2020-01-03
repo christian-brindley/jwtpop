@@ -95,11 +95,11 @@ This JWT is included in the **Authorization** header of the request - e.g.
 ```
 POST https://am.authdemo.org/json/realms/root/realms/mobile/authenticate
 Accept-API-Version: resource=2.0, protocol=1.0
-Authorization: eyJhbGciOiJ...EGRIQQmlvdBB3si3_ctg' \
-  -H 'Content-Type: application/json' \
-  -d '{
-    "authId": "eyJ0…66caD6YW4JrVtTzbeVWZ3ZI”
-}'
+Authorization: eyJhbGciOiJ...EGRIQQmlvdBB3si3_ctg
+Content-Type: application/json
+{
+  "authId": "eyJ0…66caD6YW4JrVtTzbeVWZ3ZI”
+}
 ```
 
 ### Verification
