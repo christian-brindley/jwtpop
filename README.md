@@ -1,5 +1,6 @@
 # jwtpop
-JWT based proof of possession for mobile devices
+
+## JWT based proof of possession for mobile devices
 
 This is a demonstration set of assets for secure binding of a mobile device to a user identity, implemented using the ForgeRock identity stack.
 
@@ -107,8 +108,8 @@ Content-Type: application/json
 After receiving the signed JWT, AM processes the request as follows:
 
 - Find the entry in the user directory which matches the userid in the JWT 
-- Search for a popDeviceProfiles attribute for the user which matches the device ID in the JWT
-- If device found, verify the JWT signature against the public key from the popDeviceProfiles entry. If verification successful, authentication is complete
+- Search for a **popDeviceProfiles** attribute for the user which matches the device ID in the JWT
+- If device found, verify the JWT signature against the public key from the **popDeviceProfiles** entry. If verification successful, authentication is complete
 - If device not found, verify JWT signature against JWK claim in header, add the device details to the shared session, and mark the outcome as "unregistered" to progress to registration node
 
 ### Registration
@@ -133,7 +134,7 @@ X-OpenIDM-Username: openidm-admin
 }
 ```
 
-This triggers an implicit sync from IDM to the user store, creating the new popDeviceProfiles entry - e.g.
+This triggers an implicit sync from IDM to the user store, creating the new **popDeviceProfiles** entry - e.g.
 
 ```
 {"deviceId":"4d5d7dc2-6ee9-4ddd-85d0-79be72450c0c","friendlyName":"My iPad","lastUsed":"1577873454","registered":"1577873454","status":"active","jwk":"{\"kty\":\"RSA\",\"e\":\"AQAB\",\"kid\":\"b26f5b82-6d3d-492a-be07-c0f999477906\",\"n\":\"xFgwai0E1I98e4B2cYyxje77uegjCYVECrf86YjTR5uVSz5fog-iX1UMktE3eugaW-Q1czKb3sJh-H0yjd_DZf0YZVdg4qv5f97RO3_bmmjHnyNYJRFrJlHz-SIOJD7yjVRO8KfM9c7is4GoAAny_0PXN0RGIY4iKU5bGMYsZLXtdfGsFSX2srR9_OVmZaLxqjQiu4HnnxOG4bZGqpZKQjV1JMpvR70g67p5sKdAk-8PGitO0mifqSh69YVuNhsfBC3AK0vctkVDYRXO-1jBEAmtlYd_zWDWpBXR648VyviMYMOz8HaZ3oZNnkpuSaPbQb5-CMFkZCUbj0TCjF5fCw\"}","_id":"12a006b7-8393-420e-8585-41d4b8baf29b","_rev":"5"}
@@ -155,7 +156,28 @@ You'll need to set up a secret with ID "IDMPassword" for the registration script
 
 #### Authentication nodes
 
-You'll need to add all four [groovy scripts](nodes) in this repo as [scripted decision nodes](https://backstage.forgerock.com/docs/am/6.5/authentication-guide/#auth-node-scripted-decision). Once done, you can build an authentication tree to handle authentication and registration. For simplicity, you can split the registration into an inner tree - for example:
+You'll need to add all four [groovy scripts](nodes) in this repo as [scripted decision nodes](https://backstage.forgerock.com/docs/am/6.5/authentication-guide/#auth-node-scripted-decision). 
+
+The nodes are as follows
+
+- **popChallenge.groovy**
+
+This is the initial authentication node which responds to the mobile device with an HttpCallback containing the challenge.
+
+- **popResponse.groovy**
+
+This authentication node validates the response collected by the popChallenge node
+
+- **popFriendlyName.groovy**
+
+This is a simple node which sends a NameCallback to collect the friendly name for the device to be registered
+
+- **popRegister.groovy**
+
+This node calls IDM to register the new device against the user identity.
+
+
+Once done, you can build an authentication tree to handle authentication and registration. For simplicity, you can split the registration into an inner tree - for example:
 
 ##### Authentication tree
 ![Authentication](images/tree_auth.png)
