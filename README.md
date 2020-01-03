@@ -86,4 +86,20 @@ $ ./ldapmodify \
 popDeviceProfilesSchema.ldif 
 ```
 
+## Identity Management
 
+To make use of the registration logic, you'll need to do some work in IDM. 
+
+### Managed device object
+
+You'll need to add a managed object **device** with the following properties
+
+- deviceID
+- friendlyName
+- lastUsed
+- registered
+- status
+- jwk
+- owner
+
+All properties are of type string, except **owner**, which is a two way relationship with **user**. The full definition is included in the sample **managed.json** provided in the IDM directory of this repo.
