@@ -3,7 +3,7 @@ JWT based proof of possession for mobile devices
 
 This is a demonstration set of assets for secure binding of a mobile device to a user identity, implemented using the ForgeRock identity stack.
 
-The demo uses JWT based challenge response authentication. The device presents a signed challenge to the access management service, using a registered key which is strongly protected within the device. The exact protection mechanism for the device key is implmentation specific: it could for example be secured by a biometric check to support multi factor authentication.
+The demo uses JWT based challenge response authentication. The device presents a signed challenge to the access management service, using a registered key which is strongly protected within the device. The exact protection mechanism for the device key is implementation specific: it could for example be secured by a biometric check to support multi factor authentication.
 
 If the device key is already registered to the user's identity, then authentication is complete and the user is given access. If the device key is not known, then the user can be authenticated using as many available factors as required: once this authentication process is complete, the device key is registered for subsequent logins, as per [this sample flow](https://sequencediagram.org/index.html#initialData=C4S2BsFMAIAUCcD2iBm1XQA6IM48niIgHYBQpmAhvKAMYhXHDQCyiARiFBdXQ5U2gBBFjxoh6jZgBEAyuTacoAWgB8IgFywA8rIAq0APSUArsAAWkJhMrBIpRV0gAeZZoAsABgCM0ABLAwJgAwpTg4OyUtADWpMSIdtBQKMwYmtAA6lluZpbWtLaQGtDOtOZhUMQA5pCqDhxOao5QxbIgVcTQ8ATYxPjQAFYA7swAFMDw7TXw0JyIALaQExIAlPVKkGqaOvpGphZWdIVxCTCTVeapaM1FwrmIkwBetkTExc7dOL39w8B1IlsWMUAGqQSYoACe0Hw4DQOHaxEgABNBiNoAAdYgAUQAHhMoswTPgZgIUUjIAA3CQwcnAShcHCkAGqOTFADiSy6kCqIBwdm6ZMp1Jw0BQD2gRLBTJYrlZ0AAStzefzkdByVTaARpYDisFLDFoAApDIGCk4AB0XJ5fLBqvVwtIYWY9s10HizDFJmISPWTlcmgAqsToPs8kdQCRoAVwpEYoybjroEGwSHcocbBGyMyAJLSIEKpU2mYu+y5lhqOVCJGCjUwYCICXBvkPexWH03f1AvCIPSIaJWchAA).
 
@@ -106,6 +106,38 @@ All properties are of type string, except **owner**, which is a two way relation
 
 ## AM user store mapping
 
-YOu'll need to create a mapping from the IDM managed user object to the Access Management user store, in order for new devices to be pushed to the user directory upon registration. This is a fairly simple one to one mapping, except for the mapping from devices to the popDeviceProfiles attribute(s) in DS. A sample mapping is provided in the sample **sync.json** provided in the IDM directory of this repo. This includes the required triggers to update user entries when updating registered devices (i.e. the *notify* and *notifySelf* definitions.
+You'll need to create a mapping from the IDM managed user object to the Access Management user store, in order for new devices to be pushed to the user directory upon registration. This is a fairly simple one to one mapping, except for the mapping from devices to the popDeviceProfiles attribute(s) in DS. A sample mapping is provided in the sample **sync.json** provided in the IDM directory of this repo. This includes the required triggers to update user entries when updating registered devices (i.e. the *notify* and *notifySelf* definitions.
 
+
+ # Testing
+ 
+Ultimately, the authentication logic should be tested using a mobile app with the client side logic to generate signed responses to the HttpCallback response from AM. 
+ 
+In the first instance, this repo includes a sample Postman collection for testing each stage of authentication and registration. 
+
+The Postman requests included are as follows:
+
+## Init crypto
+
+This sets up an internal signing service, based on the open source [jsrsasign](https://github.com/kjur/jsrsasign) javascript library.
+
+## Start authentication
+
+This calls the AM authentication tree you set up above, and expects a 401 response with the challenge from AM.
+
+## Challenge response
+
+This creates a signed JWT with the challenge from AM, along with the device and user details. 
+
+If the device is registered and the JWT signature is validated, then AM will create a user session and return the ssoToken.
+
+If the device is not registered, then AM will return a callback for the next authentication step (in the case of the demo, this is just the directory password for the user specified in the signed JWT from the device). Tests should continue with the next request (**Register - password**)
+
+## Register - password
+
+This step sends the user's password back to AM in response to the password callback request If the password is successfully validated, AM will send back a NameCallback for the device friendly name to be used for device registration.
+
+## Register - friendly name
+
+This step sends the device friendly name to AM. In response to this request, AM will call out to IDM to register the device against the user's idenity. IDM will then immediately update the user entry in DS via implicit sync, including a new popDeviceProfiles entry with the new device details.
 
