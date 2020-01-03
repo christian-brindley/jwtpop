@@ -236,16 +236,16 @@ All properties are of type string, except **owner**, which is a two way relation
 
 ## AM user store mapping
 
-You'll need to create a mapping from the IDM managed user object to the Access Management user store, in order for new devices to be pushed to the user directory upon registration. This is a fairly simple one to one mapping, except for the mapping from devices to the popDeviceProfiles attribute(s) in DS, where a transformation script is required to build the required JSON string. 
+You'll need to create a mapping from the IDM managed user object to the Access Management user store, in order for new devices to be pushed to the user directory upon registration. For the mapping from **user/devices** to the **popDeviceProfiles** attribute(s) in the user store, a transformation script is required to build the required JSON string. 
 
-A sample mapping is provided in the sample **sync.json** provided in the IDM directory of this repo. This includes the required triggers to update user entries when updating registered devices (i.e. the *notify* and *notifySelf* definitions.
+A sample mapping is provided in the sample **sync.json** provided in the IDM directory of this repo. This includes the required triggers to sync user entries when updating registered devices (i.e. the *notify* and *notifySelf* definitions).
 
 
  # Testing
  
 Ultimately, the authentication logic should be tested using a mobile app with the client side logic to generate signed responses to the HttpCallback response from AM. 
  
-In the first instance, this repo includes a sample Postman collection for testing each stage of authentication and registration. The Postman requests included are as follows:
+For initial standalone testing, this repo includes a sample Postman collection for testing each stage of authentication and registration. The Postman requests included are as follows:
 
 #### Init crypto
 
