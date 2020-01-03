@@ -103,3 +103,9 @@ You'll need to add a managed object **device** with the following properties
 - owner
 
 All properties are of type string, except **owner**, which is a two way relationship with **user**. The full definition is included in the sample **managed.json** provided in the IDM directory of this repo.
+
+## AM user store mapping
+
+YOu'll need to create a mapping from the IDM managed user object to the Access Management user store, in order for new devices to be pushed to the user directory upon registration. This is a fairly simple one to one mapping, except for the mapping from devices to the popDeviceProfiles attribute(s) in DS. A sample mapping is provided in the sample **sync.json** provided in the IDM directory of this repo. This includes the required triggers to update user entries when updating registered devices (i.e. the *notify* and *notifySelf* definitions.
+
+
