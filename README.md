@@ -33,7 +33,21 @@ You'll need the following to implement the full demo setup
 - [ForgeRock Identity Management](https://www.forgerock.com/platform/identity-management) (tested with IDM 6.5.0)
 - [Postman](https://www.getpostman.com) (tested with Postman 7.12)
 
+## Setup
 
+### Access Management
+
+#### Realm
+
+It is recommended that you set up a separate realm for testing the assets. 
+
+#### Secrets
+
+You'll need to set up a secret with ID "IDMPassword" for the registration script. This should be the password for the IDM user "openidm-admin" (change this in the registration node if necessary).
+
+#### Authentication nodes
+
+You'll need to add all four groovy scripts as scripted decision nodes. Once done, you can build an authentication tree 
 
 
 
