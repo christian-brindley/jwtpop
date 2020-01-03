@@ -80,6 +80,6 @@ You'll find a sample LDIF file with the required definition for this container. 
 --continueOnError \
 --bindDN 'cn=Directory Manager' \
 --bindPassword 'str0ngEx4mplePa55word' \
-/path/to/tomcat/webapps/openam/WEB-INF/template/ldif/opendj/popdeviceprofiles.ldif```
+/path/to/tomcat/webapps/openam/WEB-INF/template/ldif/opendj/popdeviceprofiles.ldif ```
 
 
