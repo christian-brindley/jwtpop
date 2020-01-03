@@ -41,7 +41,23 @@ You'll need the following to implement the full demo setup
 
 The demo setup follows [this sample flow](https://sequencediagram.org/index.html#initialData=C4S2BsFMAIAUCcD2iBm1XQA6IM48niIgHYBQpmAhvKAMYhXHDQCyiARiFBdXQ5U2gBBFjxoh6jZgBEAyuTacoAWgB8IgFywA8rIAq0APSUArsAAWkJhMrBIpRV0gAeZZoAsABgCM0ABLAwJgAwpTg4OyUtADWpMSIdtBQKMwYmtAA6lluZpbWtLaQGtDOtOZhUMQA5pCqDhxOao5QxbIgVcTQ8ATYxPjQAFYA7swAFMDw7TXw0JyIALaQExIAlPVKkGqaOvpGphZWdIVxCTCTVeapaM1FwrmIkwBetkTExc7dOL39w8B1IlsWMUAGqQSYoACe0Hw4DQOHaxEgABNBiNoAAdYgAUQAHhMoswTPgZgIUUjIAA3CQwcnAShcHCkAGqOTFADiSy6kCqIBwdm6ZMp1Jw0BQD2gRLBTJYrlZ0AAStzefzkdByVTaARpYDisFLDFoAApDIGCk4AB0XJ5fLBqvVwtIYWY9s10HizDFJmISPWTlcmgAqsToPs8kdQCRoAVwpEYoybjroEGwSHcocbBGyMyAJLSIEKpU2mYu+y5lhqOVCJGCjUwYCICXBvkPexWH03f1AvCIPSIaJWchAA) for registration and authentication. The following is a detailed breakdown of this sequence:
 
+## Challenge
 
+The mobile device initially sends a request to the authenticate endpoint at Access Manager, requesting the jwtpop authentication service. AM will respond with an HttpCallback, which creates a 401 response with a random challenge in the **WWW-Authenticate** header. 
+
+##### Request
+```
+POST https://am.authdemo.org/json/realms/root/realms/mobile/authenticate 
+Accept-API-Version: resource=2.0, protocol=1.0
+Content-Type: application/json
+```
+##### Response
+```
+HTTP/1.1 401 
+Content-API-Version: resource=2.1
+WWW-Authenticate: JWT-PoP realm="",challenge="ea231fbd-568d-44ad-9269-82c7a226f7f5"
+Content-Type: application/json;charset=UTF-8
+```
 
 
 ## Setup
