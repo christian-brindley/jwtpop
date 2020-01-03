@@ -20,7 +20,7 @@ Note that these assets are purely for demonstrating the concept of JWT based pro
 - Support for RSA signing only (no EC support)
 - Plenty more limitations
 
-## Contents
+## Repo contents
 
 This repo consists of the following assets
 
@@ -236,7 +236,9 @@ All properties are of type string, except **owner**, which is a two way relation
 
 ## AM user store mapping
 
-You'll need to create a mapping from the IDM managed user object to the Access Management user store, in order for new devices to be pushed to the user directory upon registration. This is a fairly simple one to one mapping, except for the mapping from devices to the popDeviceProfiles attribute(s) in DS. A sample mapping is provided in the sample **sync.json** provided in the IDM directory of this repo. This includes the required triggers to update user entries when updating registered devices (i.e. the *notify* and *notifySelf* definitions.
+You'll need to create a mapping from the IDM managed user object to the Access Management user store, in order for new devices to be pushed to the user directory upon registration. This is a fairly simple one to one mapping, except for the mapping from devices to the popDeviceProfiles attribute(s) in DS, where a transformation script is required to build the required JSON string. 
+
+A sample mapping is provided in the sample **sync.json** provided in the IDM directory of this repo. This includes the required triggers to update user entries when updating registered devices (i.e. the *notify* and *notifySelf* definitions.
 
 
  # Testing
