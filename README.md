@@ -41,9 +41,9 @@ You'll need the following to implement the full demo setup
 
 The demo setup follows [this sample flow](https://sequencediagram.org/index.html#initialData=C4S2BsFMAIAUCcD2iBm1XQA6IM48niIgHYBQpmAhvKAMYhXHDQCyiARiFBdXQ5U2gBBFjxoh6jZgBEAyuTacoAWgB8IgFywA8rIAq0APSUArsAAWkJhMrBIpRV0gAeZZoAsABgCM0ABLAwJgAwpTg4OyUtADWpMSIdtBQKMwYmtAA6lluZpbWtLaQGtDOtOZhUMQA5pCqDhxOao5QxbIgVcTQ8ATYxPjQAFYA7swAFMDw7TXw0JyIALaQExIAlPVKkGqaOvpGphZWdIVxCTCTVeapaM1FwrmIkwBetkTExc7dOL39w8B1IlsWMUAGqQSYoACe0Hw4DQOHaxEgABNBiNoAAdYgAUQAHhMoswTPgZgIUUjIAA3CQwcnAShcHCkAGqOTFADiSy6kCqIBwdm6ZMp1Jw0BQD2gRLBTJYrlZ0AAStzefzkdByVTaARpYDisFLDFoAApDIGCk4AB0XJ5fLBqvVwtIYWY9s10HizDFJmISPWTlcmgAqsToPs8kdQCRoAVwpEYoybjroEGwSHcocbBGyMyAJLSIEKpU2mYu+y5lhqOVCJGCjUwYCICXBvkPexWH03f1AvCIPSIaJWchAA) for registration and authentication. The following is a detailed breakdown of this sequence:
 
-## Challenge
+### Challenge
 
-The mobile device initially sends a request to the authenticate endpoint at Access Manager, requesting the jwtpop authentication service. AM will respond with an HttpCallback, which creates a 401 response with a random challenge in the **WWW-Authenticate** header. 
+The mobile device initially sends a request to the authenticate endpoint at Access Manager, requesting the jwtpop authentication service. AM will respond with an HttpCallback, which creates a 401 response with a random challenge in the **WWW-Authenticate** header, along with an **authId** value to pass back with the challenge response. 
 
 ##### Request
 ```
@@ -57,8 +57,49 @@ HTTP/1.1 401
 Content-API-Version: resource=2.1
 WWW-Authenticate: JWT-PoP realm="",challenge="ea231fbd-568d-44ad-9269-82c7a226f7f5"
 Content-Type: application/json;charset=UTF-8
+{
+  "failure":true,
+  "reason":"http-auth-failed",
+  "authId":"eyJ0…66caD6YW4JrVtTzbeVWZ3ZI"
+}
 ```
 
+### Response
+
+The mobile device creates a signed JWT (typically using a biometric protected private key) containing the challenge from AM, together with details of both the user and the device itself. The device public key is included in the JWT header, as a **jwk** claim. The key fields of the JWT payload are as follows
+
+- **iss** The device ID
+- **sub** The user ID
+- **jti** The challenge from AM
+
+For example:
+
+
+```
+{
+  "alg": "RS256",
+  "typ": "JWT",
+  "jwk": "{\"kty\":\"RSA\",\"e\":\"AQAB\",\"kid\":\"b26f5b82-6d3d-492a-be07-c0f999477906\",\"n\":\"xFgwai0E1I98e4B2cYyxje77uegjCYVECrf86YjTR5uVSz5fog-iX1UMktE3eugaW-Q1czKb3sJh-H0yjd_DZf0YZVdg4qv5f97RO3_bmmjHnyNYJRFrJlHz-SIOJD7yjVRO8KfM9c7is4GoAAny_0PXN0RGIY4iKU5bGMYsZLXtdfGsFSX2srR9_OVmZaLxqjQiu4HnnxOG4bZGqpZKQjV1JMpvR70g67p5sKdAk-8PGitO0mifqSh69YVuNhsfBC3AK0vctkVDYRXO-1jBEAmtlYd_zWDWpBXR648VyviMYMOz8HaZ3oZNnkpuSaPbQb5-CMFkZCUbj0TCjF5fCw\"}"		
+}
+{
+  "exp": 1573569241,
+  "iss": "947fe0ba-055a-11ea-8d71-362b9e155667",  
+  "sub": "jane.doe",				
+  "aud": "https://am.authdemo.org",
+  "jti": "ea231fbd-568d-44ad-9269-82c7a226f7f5"		
+}
+```
+
+
+This JWT is included in the **Authorization** header of the request - e.g.
+
+POST https://am.authdemo.org/json/realms/root/realms/mobile/authenticate
+Accept-API-Version: resource=2.0, protocol=1.0
+Authorization: eyJhbGciOiJ...EGRIQQmlvdBB3si3_ctg' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "authId": "eyJ0…66caD6YW4JrVtTzbeVWZ3ZI”
+}'
 
 ## Setup
 
