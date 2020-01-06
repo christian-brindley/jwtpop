@@ -218,7 +218,7 @@ popDeviceProfilesSchema.ldif
 
 ## Identity Management
 
-To make use of the registration logic, you'll need to do some work in IDM. 
+To make use of the registration logic, you'll need to do some work in IDM. If you don't want to deploy IDM, you can write a custom node to write the device details directly to DS as a JSON string within the popDeviceProfiles attribute.
 
 ### Managed device object
 
