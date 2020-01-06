@@ -177,7 +177,7 @@ The nodes are as follows
   This node calls IDM to register the new device against the user identity.
 
 
-Once done, you can build an authentication tree to handle authentication and registration. For simplicity, you can split the registration into an inner tree - for example:
+Once done, you can build an authentication tree to handle authentication and registration. For simplicity, you can split the registration into an inner tree - for example the following tree **jwtpop** directs registration to the node "Auth and Register", which is an inner tree node pointing at the tree **jwtpopRegister**.
 
 ##### Authentication tree
 ![Authentication](images/tree_auth.png)
