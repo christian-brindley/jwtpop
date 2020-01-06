@@ -17,7 +17,7 @@ The requirement for Identity Management may be circumvented by customising the r
 Note that these assets are purely for demonstrating the concept of JWT based proof of possession, and have a number of limitations, including
 
 - Limited/zero error handling
-- Use of scripted decision nodes rather than native classes
+- Use of scripted decision nodes rather than native classes for the authentication tree
 - Support for RSA signing only (no EC support)
 - Plenty more limitations
 
