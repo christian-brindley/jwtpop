@@ -6,7 +6,7 @@ This is a demonstration set of assets for secure binding of a mobile device to a
 
 The demo uses JWT based challenge response authentication. The device presents a signed challenge to the access management service, using a registered key which is strongly protected within the device. The exact protection mechanism for the device key is implementation specific: it could for example be secured by a biometric check to support multi factor authentication.
 
-If the device key is already registered to the user's identity, then authentication is complete and the user is given access. If the device key is not known, then the user can be authenticated using as many available factors as required: once this authentication process is complete, the device key is registered for subsequent logins.
+If the device key is already registered to the user's identity, and the JWT signature verified, then authentication is complete and the user is given access. If the device key is not known, then the user can be authenticated using as many available factors as required: once this authentication process is complete, the device key is registered for subsequent logins.
 
 The core functions are provided by a set of authentication nodes for the ForgeRock Access Management service. These nodes are implemented as Scripted Decision Nodes for convenience; for production purposes, authentication nodes should be implemented as native Java classes.
 
