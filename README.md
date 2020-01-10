@@ -52,7 +52,7 @@ POST https://am.authdemo.org/json/realms/root/realms/mobile/authenticate
 Accept-API-Version: resource=2.0, protocol=1.0
 Content-Type: application/json
 ```
-AM responds with a 401 response with a random challenge in the **WWW-Authenticate** header, along with an **authId** value to pass back with the challenge response. 
+AM responds with an HTTP 401 containing a random challenge in the **WWW-Authenticate** header; the body also contains an **authId** value to pass back with the challenge response. 
 ```
 HTTP/1.1 401 
 Content-API-Version: resource=2.1
