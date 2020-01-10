@@ -157,7 +157,7 @@ You'll need to set up a secret with ID "IDMPassword" for the registration script
 
 #### Authentication nodes
 
-You'll need to add all four [groovy scripts](nodes) in this repo as [scripted decision nodes](https://backstage.forgerock.com/docs/am/6.5/authentication-guide/#auth-node-scripted-decision). Note that you'll need to make sure that all of the Java classes referenced by the scripts are permitted by the script engine whitelist [Refer to the knowledgebase article on whitelisting](https://backstage.forgerock.com/knowledge/kb/article/a44542794) for more details.
+You'll need to add all four [groovy scripts](nodes) in this repo as [scripted decision nodes](https://backstage.forgerock.com/docs/am/6.5/authentication-guide/#auth-node-scripted-decision). Note that you'll need to make sure that all of the Java classes referenced by the scripts are permitted by the script engine: refer to the [knowledgebase article](https://backstage.forgerock.com/knowledge/kb/article/a44542794) on whitelisting for more details.
 
 The nodes are as follows
 
