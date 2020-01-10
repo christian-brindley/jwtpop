@@ -25,7 +25,7 @@ Note that these assets are purely for demonstrating the concept of JWT based pro
 
 This repo consists of the following assets
 
-- [Sample scripted decision nodes](nodes) for ForgeRock Access Manager 
+- [Sample scripted decision nodes](nodes) for ForgeRock Access Management
 - [Sample LDIF files](ldif) with the LDAP container definition for holding the device key information in a user directory 
 - [Sample configuration files](idm) for ForgeRock IDM to handle device registration
 - [Sample Postman collection and environment](postman) to emulate the mobile device for testing
@@ -45,7 +45,7 @@ The demo setup follows [this sample flow](https://sequencediagram.org/index.html
 
 ### Challenge
 
-The mobile device initially sends a request to the authenticate endpoint at Access Manager, requesting the jwtpop authentication service. AM will respond with an HttpCallback, which creates a 401 response with a random challenge in the **WWW-Authenticate** header, along with an **authId** value to pass back with the challenge response. 
+The mobile device initially sends a request to the authenticate endpoint at Access Management, requesting the jwtpop authentication service. AM will respond with an HttpCallback, which creates a 401 response with a random challenge in the **WWW-Authenticate** header, along with an **authId** value to pass back with the challenge response. 
 
 ##### HTTP request
 ```
