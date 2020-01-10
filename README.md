@@ -153,7 +153,7 @@ It is recommended that you set up a separate realm for testing the assets.
 
 #### Secrets
 
-You'll need to set up a secret with ID "IDMPassword" for the registration script. This should be the password for the IDM user "openidm-admin" (change this in the registration node if necessary).
+You'll need to set up a secret with ID "IDMPassword" for the registration script. This should be the password for the IDM user "openidm-admin" (change this in the **popRegister.groovy** script if necessary). If you don't want to do this right away, you can hardcode the password in the script.
 
 #### Authentication nodes
 
