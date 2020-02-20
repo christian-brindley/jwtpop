@@ -158,6 +158,31 @@ You'll need to set up a secret with ID "IDMPassword" for the registration script
 
 You'll need to add all four [groovy scripts](nodes) in this repo as [scripted decision nodes](https://backstage.forgerock.com/docs/am/6.5/authentication-guide/#auth-node-scripted-decision). Note that you'll need to make sure that all of the Java classes referenced by the scripts are permitted by the script engine: refer to the [knowledgebase article](https://backstage.forgerock.com/knowledge/kb/article/a44542794) on whitelisting for more details.
 
+The following classes will need to be added to the whitelist for these scripts to work
+
+```java.util.UUID
+java.util.Locale
+ParsedJwt
+org.forgerock.json.jose.utils.Utils
+org.forgerock.util.encode.Base64url
+byte
+com.sun.identity.idm.IdUtils
+com.sun.identity.idm.AMIdentity
+groovy.json.JsonOutput
+org.forgerock.json.jose.jws.SigningManager
+sun.security.rsa.RSAPublicKeyImpl
+org.forgerock.json.jose.jws.handlers.RSASigningHandler
+org.forgerock.json.jose.jws.JwsHeader
+org.forgerock.json.jose.jwt.JwtClaimsSet
+org.forgerock.json.jose.jws.SignedJwt
+org.forgerock.guice.core.InjectorHolder
+org.forgerock.openam.secrets.Secrets
+org.forgerock.openam.secrets.SecretsProviderFacade
+org.forgerock.secrets.Purpose
+org.forgerock.secrets.GenericSecret
+char
+java.util.Date```
+
 The nodes are as follows
 
 - **popChallenge.groovy**
